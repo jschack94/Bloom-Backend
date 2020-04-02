@@ -1,4 +1,4 @@
-class Api::V1::MessagesController < ApplicationController
+  class Api::V1::MessagesController < ApplicationController
     skip_before_action :authorized, only: [:create]
   
     def create
@@ -15,6 +15,6 @@ class Api::V1::MessagesController < ApplicationController
     private
   
     def message_params
-      params.require(:message).permit(:content, :relationship_id, :user_id)
+      params.require(:message).permit(:text, :relationship_id, :user_id)
     end
   end
