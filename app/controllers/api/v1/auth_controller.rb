@@ -1,5 +1,5 @@
 class Api::V1::AuthController < ApplicationController
-    skip_before_action :authorized, only: [:create]
+  skip_before_action :authorized, only: [:create]
   
     def create
       @user = User.find_by(email_address: user_login_params[:email_address])
@@ -13,9 +13,18 @@ class Api::V1::AuthController < ApplicationController
       end
     end
   
+    def show
+      if current_user
+        render json: {user: current_user}
+      else
+        render json: {error: "Please log in"}, status: 422
+      end
+    end
+  
     private
   
     def user_login_params
-      params.require(:user).permit(:email_address, :password)
+      # byebug
+      params.require(:auth).permit(:email_address, :password)
     end
   end
