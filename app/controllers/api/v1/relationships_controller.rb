@@ -11,20 +11,21 @@ class Api::V1::RelationshipsController < ApplicationController
       
         ActionCable.server.broadcast 'notifications_channel', serialized_data
         render json: { relationship: RelationshipSerializer.new(@relationship) }, status: :created
-      else
+      
         render json: { error: 'failed to create relationship' }, status: :not_acceptable
       end
-    end
+    
   
     def update
       @relationship = Relationship.find_by(mentor_id: relationship_params[:mentor_id], mentee_id: relationship_params[:mentee_id])
       @relationship.update(accepted: relationship_params[:accepted])
       
         render json: @relationship, status: :accepted
-      else
+      
         render json: { error: 'failed to update relationship' }, status: :not_acceptable
       end
-    end
+    
+  
   
     def destroy
       @relationship = Relationship.find_by(mentor_id: relationship_params[:mentor_id], mentee_id: relationship_params[:mentee_id])
@@ -37,5 +38,6 @@ class Api::V1::RelationshipsController < ApplicationController
     def relationship_params
       params.require(:relationship).permit(:mentee_id, :mentor_id, :accepted)
     end
-  
   end
+  
+  
