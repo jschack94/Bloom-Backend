@@ -1,4 +1,4 @@
-class RelationshipSerializer < ActiveModel::Serializer
+class ConnectionSerializer < ActiveModel::Serializer
   attributes :id, :mentor, :mentee, :accepted, :created_at
 
   belongs_to :mentee, class_name: "User"

@@ -10,7 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_01_192643) do
+ActiveRecord::Schema.define(version: 2020_04_04_172125) do
+
+  create_table "connections", force: :cascade do |t|
+    t.integer "mentee_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "locations", force: :cascade do |t|
     t.string "city"
@@ -22,11 +28,11 @@ ActiveRecord::Schema.define(version: 2020_04_01_192643) do
 
   create_table "messages", force: :cascade do |t|
     t.string "text"
-    t.integer "relationship_id"
+    t.integer "connection_id"
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["relationship_id"], name: "index_messages_on_relationship_id"
+    t.index ["connection_id"], name: "index_messages_on_connection_id"
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
@@ -39,17 +45,6 @@ ActiveRecord::Schema.define(version: 2020_04_01_192643) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["recipient_id"], name: "index_notifications_on_recipient_id"
     t.index ["sender_id"], name: "index_notifications_on_sender_id"
-  end
-
-  create_table "relationships", force: :cascade do |t|
-    t.integer "mentee_id"
-    t.integer "mentor_id"
-    t.boolean "accepted", default: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["mentee_id", "mentor_id"], name: "index_relationships_on_mentee_id_and_mentor_id", unique: true
-    t.index ["mentee_id"], name: "index_relationships_on_mentee_id"
-    t.index ["mentor_id"], name: "index_relationships_on_mentor_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -72,7 +67,7 @@ ActiveRecord::Schema.define(version: 2020_04_01_192643) do
     t.index ["location_id"], name: "index_users_on_location_id"
   end
 
-  add_foreign_key "messages", "relationships"
+  add_foreign_key "messages", "connections"
   add_foreign_key "messages", "users"
   add_foreign_key "users", "locations"
 end

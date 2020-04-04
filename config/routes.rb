@@ -7,16 +7,16 @@ Rails.application.routes.draw do
       get '/profile', to: 'users#profile'
       patch "/users", to: "users#update"
 
-      resources :relationships, only: [:index, :create]
-      patch "/relationships", to: "relationships#update"
-      delete "/relationships", to: "relationships#destroy"
+      resources :connections, only: [:index, :create]
+      patch "/connections", to: "connections#update"
+      delete "/connections", to: "connectionss#destroy"
 
       resources :messages, only: [:create]
       
       resources :notifications, only: [:create]
       patch "/notifications", to: "notifications#update"
 
-      mount ActionCable.server => '/cable'
+      
     end
   end
 end

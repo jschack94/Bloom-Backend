@@ -1,6 +1,10 @@
-#may HAVE TO FIX THIS DOWN THE ROAD. STRIVE TO UNDERSTAND
+class Message < ApplicationRecord
+    belongs_to :connection
+    belongs_to :user
+  end
 
-class User < ApplicationRecord
+
+  class User < ApplicationRecord
     has_secure_password
     validates :email_address, {presence: true, uniqueness: true}
     validates :password, presence: true
@@ -31,3 +35,6 @@ class User < ApplicationRecord
                                   foreign_key: "sender_id",
                                   dependent:   :destroy
   end
+
+
+
