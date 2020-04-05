@@ -1,28 +1,27 @@
-#may HAVE TO FIX THIS DOWN THE ROAD. STRIVE TO UNDERSTAND
-
 class User < ApplicationRecord
     has_secure_password
     validates :email_address, {presence: true, uniqueness: true}
-    validates :password, presence: true
+    validates :password_digest, presence: true
     validates :first_name, presence: true
     validates :last_name, presence: true
   
     belongs_to :location
   
-    has_many :connections, -> { where(accepted: true) }, class_name:  "Connection",
+    has_many :active_connections, -> { where(accepted: true) }, class_name:  "Connection",
                                   foreign_key: "mentee_id",
                                   dependent:   :destroy
-    has_many :connections, -> { where(accepted: true) }, class_name:  "Connection",
+    has_many :passive_connections, -> { where(accepted: true) }, class_name:  "Connection",
                                   foreign_key: "mentor_id",
                                   dependent:   :destroy
-    has_many :mentors, through: :connections,
+    has_many :mentors, through: :active_connections,
                                   dependent:   :destroy
-    has_many :mentees, through: :connections,
+    has_many :mentees, through: :passive_connections,
                                   dependent:   :destroy
   
-    has_many :messages, through: :connections,
+    has_many :messages, through: :active_connections,
                                   dependent:   :destroy
-   
+    has_many :messages, through: :passive_connections,
+                                  dependent:   :destroy
   
     has_many :received_notifications, class_name:  "Notification",
                                   foreign_key: "recipient_id",

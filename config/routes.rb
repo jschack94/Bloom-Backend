@@ -16,7 +16,7 @@ Rails.application.routes.draw do
       resources :notifications, only: [:create]
       patch "/notifications", to: "notifications#update"
 
-      
+      mount ActionCable.server => '/cable'
     end
   end
 end

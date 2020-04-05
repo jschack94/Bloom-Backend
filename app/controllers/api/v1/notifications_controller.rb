@@ -26,5 +26,3 @@ class Api::V1::NotificationsController < ApplicationController
   def notification_params
     params.require(:notification).permit(:id, :sender_id, :recipient_id, :text, :opened)
   end
-
-end

@@ -11,10 +11,10 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def create
-  @user = User.create(user_params)
-      if @user.valid?
-        @token = encode_token(user_id: @user.id)
-        render json: { user: UserSerializer.new(@user), jwt: @token }, status: :created
+    @user = User.create(user_params)
+    if @user.valid?
+      @token = encode_token(user_id: @user.id)
+      render json: { user: UserSerializer.new(@user), jwt: @token }, status: :created
     else
       if params[:user][:email_address] == ''
         render json: { errors: 'Email address field must not be blank' }, status: :not_acceptable
