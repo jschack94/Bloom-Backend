@@ -10,6 +10,8 @@ gem 'sqlite3', '~> 1.4'
 # Use Puma as the app server
 gem 'puma', '~> 4.1'
 
+gem 'passenger', '5.0.28'
+
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 # gem 'jbuilder', '~> 2.7'
@@ -43,6 +45,8 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem "jwt", "~> 2.2"
+
+
 
 gem "active_model_serializers", "~> 0.10.10"
 

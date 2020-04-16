@@ -100,6 +100,9 @@ GEM
     nio4r (2.5.2)
     nokogiri (1.10.9)
       mini_portile2 (~> 2.4.0)
+    passenger (5.0.28)
+      rack
+      rake (>= 0.8.1)
     puma (4.3.3)
       nio4r (~> 2.0)
     rack (2.2.2)
@@ -171,6 +174,7 @@ DEPENDENCIES
   faker (~> 2.11)
   jwt (~> 2.2)
   listen (>= 3.0.5, < 3.2)
+  passenger (= 5.0.28)
   puma (~> 4.1)
   rack-cors
   rails (~> 6.0.2, >= 6.0.2.2)
