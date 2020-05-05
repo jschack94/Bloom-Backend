@@ -12,15 +12,7 @@ class Api::V1::NotificationsController < ApplicationController
     end
   end
 
-  def update
-    @notifications = Notification.where(recipient_id: notification_params[:recipient_id])
-    @notifications.map{ |notification| notification.update(opened: notification_params[:opened]) }
-    if @notifications.map{ |notification| notification.valid? }
-      render json: { message: 'updated notifications' }, status: :accepted
-    else
-      render json: { error: 'failed to update notifications' }, status: :not_acceptable
-    end
-  end
+
 
   private
   def notification_params

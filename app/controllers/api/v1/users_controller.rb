@@ -1,5 +1,5 @@
 class Api::V1::UsersController < ApplicationController
-  skip_before_action :authorized, only: [:index, :create, :update]
+  skip_before_action :authorized, only: %i[index create update]
 
   def index
     @users = User.all
@@ -14,18 +14,27 @@ class Api::V1::UsersController < ApplicationController
     @user = User.create(user_params)
     if @user.valid?
       @token = encode_token(user_id: @user.id)
-      render json: { user: UserSerializer.new(@user), jwt: @token }, status: :created
+      render json: { user: UserSerializer.new(@user), jwt: @token },
+             status: :created
     else
       if params[:user][:email_address] == ''
-        render json: { errors: 'Email address field must not be blank' }, status: :not_acceptable
+        render json: { errors: 'Email address field must not be blank' },
+               status: :not_acceptable
       elsif params[:user][:password] == ''
-        render json: {errors: "Password field must not be blank"}, status: :not_acceptable
+        render json: { errors: 'Password field must not be blank' },
+               status: :not_acceptable
       elsif params[:user][:first_name] == ''
-        render json: {errors: "First name field must not be blank"}, status: :not_acceptable
+        render json: { errors: 'First name field must not be blank' },
+               status: :not_acceptable
       elsif params[:user][:last_name] == ''
-        render json: {errors: "Last Name field must not be blank"}, status: :not_acceptable
+        render json: { errors: 'Last Name field must not be blank' },
+               status: :not_acceptable
       else
-        render json: {errors: "This email address has already been used to create an account"}, status: :not_acceptable
+        render json: {
+                 errors:
+                   'This email address has already been used to create an account'
+               },
+               status: :not_acceptable
       end
     end
   end
@@ -41,7 +50,23 @@ class Api::V1::UsersController < ApplicationController
   end
 
   private
+
   def user_params
-    params.require(:user).permit(:id, :email_address, :password, :first_name, :last_name, :profile_pic, :job_title, :expertiseArray, :bio, :linkedin, :github, :personal_website, :mentor_status, :will_buy_coffee)
+    params.require(:user).permit(
+      :id,
+      :email_address,
+      :password,
+      :first_name,
+      :last_name,
+      :profile_pic,
+      :job_title,
+      :expertiseArray,
+      :bio,
+      :linkedin,
+      :github,
+      :personal_website,
+      :mentor_status,
+      :will_buy_coffee
+    )
   end
 end
