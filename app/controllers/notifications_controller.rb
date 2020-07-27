@@ -1,4 +1,4 @@
-class Api::V1::NotificationsController < ApplicationController
+class NotificationsController < ApplicationController
   skip_before_action :authorized, only: [:create, :update]
 
   def create

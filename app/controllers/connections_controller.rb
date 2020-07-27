@@ -1,4 +1,4 @@
-class Api::V1::ConnectionsController < ApplicationController
+class ConnectionsController < ApplicationController
   skip_before_action :authorized, only: %i[index create update destroy]
 
   def index

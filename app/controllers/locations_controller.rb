@@ -1,4 +1,4 @@
-class Api::V1::LocationsController < ApplicationController
+class LocationsController < ApplicationController
   def index
     @locations = Location.all
     render json: @locations

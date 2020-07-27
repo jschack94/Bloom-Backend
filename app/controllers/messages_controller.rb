@@ -1,4 +1,4 @@
-class Api::V1::MessagesController < ApplicationController
+class MessagesController < ApplicationController
   skip_before_action :authorized, only: %i[create]
 
   def create

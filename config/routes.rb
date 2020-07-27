@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
-  namespace :api do
-    namespace :v1 do
+  
       resources :locations, only: [:index]
       resources :users, only: [:index, :create, :current_user]
       post '/login', to: 'auth#create'
@@ -18,5 +17,4 @@ Rails.application.routes.draw do
 
       mount ActionCable.server => '/cable'
     end
-  end
-end
+  
