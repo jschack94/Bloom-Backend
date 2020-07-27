@@ -3,7 +3,6 @@ development:
   encoding: unicode
   database: myapp
   pool: 5
-  username: jonathanschack
 
   timeout: 5000
 
@@ -12,6 +11,6 @@ test:
   encoding: unicode
   database: myapp
   pool: 5
-  username: jonathanschack
+  
  
   timeout: 5000
