@@ -1,4 +1,4 @@
-class CreateConnections < ActiveRecord::Migration[6.0]
+  class CreateConnections < ActiveRecord::Migration[6.0]
   def change
     create_table :connections do |t|
       t.integer :mentee_id
