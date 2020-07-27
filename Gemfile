@@ -10,6 +10,8 @@ gem 'pg'
 # Use Puma as the app server
 gem 'puma', '~> 4.1'
 
+
+
 gem 'passenger', '5.0.28'
 
 
@@ -51,5 +53,8 @@ gem "jwt", "~> 2.2"
 gem "active_model_serializers", "~> 0.10.10"
 
 gem "faker", "~> 2.11"
+<<<<<<< HEAD
 
 gem 'rails_12factor'
+=======
+>>>>>>> d7c54fcdd92b2575198aae62bf5eff9548d4c13c
