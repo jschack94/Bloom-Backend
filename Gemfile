@@ -10,7 +10,7 @@ gem 'pg'
 # Use Puma as the app server
 gem 'puma', '~> 4.1'
 
-gem 'rails_12factor'
+
 
 gem 'passenger', '5.0.28'
 
