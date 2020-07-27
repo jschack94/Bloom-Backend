@@ -103,6 +103,7 @@ GEM
     passenger (5.0.28)
       rack
       rake (>= 0.8.1)
+    pg (1.2.3)
     puma (4.3.3)
       nio4r (~> 2.0)
     rack (2.2.2)
@@ -153,7 +154,6 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
-    sqlite3 (1.4.2)
     thor (1.0.1)
     thread_safe (0.3.6)
     tzinfo (1.2.6)
@@ -175,17 +175,17 @@ DEPENDENCIES
   jwt (~> 2.2)
   listen (>= 3.0.5, < 3.2)
   passenger (= 5.0.28)
+  pg
   puma (~> 4.1)
   rack-cors
   rails (~> 6.0.2, >= 6.0.2.2)
   redis (~> 4.0)
   spring
   spring-watcher-listen (~> 2.0.0)
-  sqlite3 (~> 1.4)
   tzinfo-data
 
 RUBY VERSION
    ruby 2.6.1p33
 
 BUNDLED WITH
-   2.1.2
+   2.1.4
