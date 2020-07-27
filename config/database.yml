@@ -3,8 +3,8 @@ development:
   encoding: unicode
   database: myapp
   pool: 5
+  username: jonathanschack
 
-  password: jonathanschack
   timeout: 5000
 
 test:
