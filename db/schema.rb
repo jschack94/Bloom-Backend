@@ -18,6 +18,9 @@ ActiveRecord::Schema.define(version: 2020_07_27_230518) do
     t.boolean "accepted", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["mentee_id", "mentor_id"], name: "index_connections_on_mentee_id_and_mentor_id", unique: true
+    t.index ["mentee_id"], name: "index_connections_on_mentee_id"
+    t.index ["mentor_id"], name: "index_connections_on_mentor_id"
   end
 
   create_table "locations", force: :cascade do |t|
@@ -32,8 +35,8 @@ ActiveRecord::Schema.define(version: 2020_07_27_230518) do
     t.string "text"
     t.integer "connection_id"
     t.integer "user_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["connection_id"], name: "index_messages_on_connection_id"
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
@@ -43,8 +46,10 @@ ActiveRecord::Schema.define(version: 2020_07_27_230518) do
     t.integer "sender_id"
     t.string "text"
     t.boolean "opened", default: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["recipient_id"], name: "index_notifications_on_recipient_id"
+    t.index ["sender_id"], name: "index_notifications_on_sender_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -61,11 +66,13 @@ ActiveRecord::Schema.define(version: 2020_07_27_230518) do
     t.string "personal_website", default: ""
     t.boolean "mentor_status", default: false
     t.boolean "will_buy_coffee", default: false
-    t.integer "location_id"
+    t.integer "location_id", default: 1
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["location_id"], name: "index_users_on_location_id"
   end
 
   add_foreign_key "messages", "connections"
+  add_foreign_key "messages", "users"
+  add_foreign_key "users", "locations"
 end
