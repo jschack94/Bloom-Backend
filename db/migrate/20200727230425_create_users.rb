@@ -14,7 +14,7 @@ class CreateUsers < ActiveRecord::Migration[6.0]
       t.string :personal_website, :default => ''
       t.boolean :mentor_status, :default => false
       t.boolean :will_buy_coffee, :default => false
-      t.references :location, foreign_key: true, :default => 1
+      t.belongs_to :location
 
       t.timestamps
     end
