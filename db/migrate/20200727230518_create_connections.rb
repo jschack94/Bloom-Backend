@@ -8,8 +8,6 @@ class CreateConnections < ActiveRecord::Migration[6.0]
 
       t.timestamps
     end
-    add_index :connections, :mentee_id
-    add_index :connections, :mentor_id
-    add_index :connections, [:mentee_id, :mentor_id], unique: true
+   
   end
 end
