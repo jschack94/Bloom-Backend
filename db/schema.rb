@@ -18,9 +18,6 @@ ActiveRecord::Schema.define(version: 2020_07_27_230518) do
     t.boolean "accepted", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["mentee_id", "mentor_id"], name: "index_connections_on_mentee_id_and_mentor_id", unique: true
-    t.index ["mentee_id"], name: "index_connections_on_mentee_id"
-    t.index ["mentor_id"], name: "index_connections_on_mentor_id"
   end
 
   create_table "locations", force: :cascade do |t|
