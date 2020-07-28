@@ -103,7 +103,7 @@ GEM
     passenger (5.0.28)
       rack
       rake (>= 0.8.1)
-    pg (0.18.1)
+    pg (1.2.3)
     puma (4.3.3)
       nio4r (~> 2.0)
     rack (2.2.2)
@@ -181,7 +181,7 @@ DEPENDENCIES
   jwt (~> 2.2)
   listen (>= 3.0.5, < 3.2)
   passenger (= 5.0.28)
-  pg (= 0.18.1)
+  pg (>= 0.18, < 2.0)
   puma (~> 4.1)
   rack-cors
   rails (~> 6.0.2, >= 6.0.2.2)
@@ -189,7 +189,7 @@ DEPENDENCIES
   redis (~> 4.0)
   spring
   spring-watcher-listen (~> 2.0.0)
-  sqlite3
+  sqlite3 (~> 1.4)
   tzinfo-data
 
 RUBY VERSION
