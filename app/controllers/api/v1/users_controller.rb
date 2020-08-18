@@ -66,7 +66,8 @@ class Api::V1::UsersController < ApplicationController
       :github,
       :personal_website,
       :mentor_status,
-      :will_buy_coffee
+      :will_buy_coffee,
+      :location
     )
   end
 end
