@@ -11,7 +11,7 @@ gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
 gem 'puma', '~> 4.1'
 
-gem 'passenger', '5.0.28'
+gem 'passenger', '5.3.2'
 
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
